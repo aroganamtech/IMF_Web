@@ -1,0 +1,109 @@
+$dark-gray: #4B5563;
+$medium-gray: #6B7280;
+$light-gray: #D1D5DB;
+$white: #FFFFFF;
+$shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+$transition: all 0.3s ease-in-out;
+$font-size: 1rem;
+$padding: 0.5rem 1rem;
+
+.content-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 2rem;
+  text-align: center;
+
+  .content-title {
+    color: $dark-gray;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 600px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .content-subtitle {
+    color: $medium-gray;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 600px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .content-description {
+    color: $dark-gray;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+  }
+
+  .content-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .content-nav-item-container {
+      position: relative;
+      cursor: pointer;
+      padding-bottom: 0;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        z-index: 500;
+        transition: $transition;
+      }
+
+      &:hover::before {
+        height: 100%;
+        background-color: rgba($medium-gray, 0.1);
+      }
+
+      &:hover .content-nav-item {
+        color: $white;
+      }
+    }
+
+    .content-nav-item {
+      color: $white;
+      font-weight: 500;
+      font-size: $font-size;
+      text-transform: capitalize;
+      text-decoration: none;
+      transition: $transition;
+      position: relative;
+      cursor: pointer;
+      padding: $padding;
+      display: block;
+      background-color: $dark-gray;
+      border-radius: 4px;
+
+      &.active {
+        color: $medium-gray;
+        font-weight: 700;
+      }
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+$dark-gray: #4B5563;
+$medium-gray: #6B7280;
+$light-gray: #D1D5DB;
+$white: #FFFFFF;
+$shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+$transition: all 0.3s ease-in-out;
+$header-height: 80px;
+$font-size: 1rem;
+$padding: 0.5rem 1rem;
+$border-radius: 6px;
+
+.header {
+  box-shadow: $shadow;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 1200;
+  transition: box-shadow 0.3s ease-in-out;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+
+  .header-toolbar {
+    display: flex;
+    align-items: center;
+    background-color: $dark-gray;
+    padding: 20px;
+    min-height: $header-height;
+
+    .logo-container {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+
+      .logo {
+        height: 60px;
+        width: auto;
+        margin: 0;
+        object-fit: contain;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          filter: drop-shadow(0 0 1rem $medium-gray);
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+
+      .nav-item-container {
+        position: relative;
+        cursor: pointer;
+        padding-bottom: 0;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 0;
+          z-index: 500;
+          transition: $transition;
+        }
+
+        &:hover::before {
+          height: 100%;
+          background-color: rgba($medium-gray, 0.1);
+        }
+
+        &:hover .nav-item {
+          color: $white;
+
+          &:not(.nav-item-home)::after {
+            width: auto;
+            left: 0.5rem;
+            right: 0.5rem;
+          }
+        }
+      }
+
+      .nav-item {
+        color: $white;
+        font-weight: 500;
+        font-size: $font-size;
+        text-transform: capitalize;
+        text-decoration: none;
+        transition: $transition;
+        position: relative;
+        cursor: pointer;
+        padding: $padding;
+
+        &:not(.nav-item-home)::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0.5rem;
+          right: 0.5rem;
+          width: 0;
+          height: 2px;
+          background-color: $white;
+          transition: width 0.3s ease-in-out;
+        }
+
+        &.active {
+          color: $white;
+          font-weight: 700;
+
+          &:not(.nav-item-home)::after {
+            width: auto;
+            left: 0.5rem;
+            right: 0.5rem;
+          }
+        }
+
+        &:hover {
+          color: $white;
+
+          &:not(.nav-item-home)::after {
+            width: auto;
+            left: 0.5rem;
+            right: 0.5rem;
+          }
+        }
+
+        &.nav-item-home::after {
+          content: none;
+        }
+
+        &.nav-item-home.active::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
