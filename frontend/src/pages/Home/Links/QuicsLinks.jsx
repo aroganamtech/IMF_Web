@@ -10,12 +10,20 @@ import {
   ListItemText,
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import card1 from "../../../../src/assets/images/frontCardimg1.png";
+import card2 from "../../../../src/assets/images/frontCardimg2.png";
+import card3 from "../../../../src/assets/images/frontCardimg3.png";
+
+import card4 from "../../../../src/assets/images/frontCardimg4.png";
+
+import card5 from "../../../../src/assets/images/frontCardimg5.png";
+import card6 from "../../../../src/assets/images/frontCardimg5.png";
 
 // Card data with back content as an array
 const quickLinks = [
   {
     title: "Expeditions",
-    image: "https://indmount.org/IMF/img/frontCardImg1.jpg",
+    image: card1,
     backList: [
       "Expedition Rules",
       "Peak Details",
@@ -25,22 +33,22 @@ const quickLinks = [
   },
   {
     title: "Membership",
-    image: "https://indmount.org/IMF/img/frontCardImg5.jpg",
+    image: card2,
     backList: ["List of Members", "Affiliate Members", "IMF Membership"],
   },
   {
     title: "Sport Climbing",
-    image: "https://indmount.org/IMF/img/frontCardImg3.jpg",
+    image: card3,
     backList: ["About Sport Climbing", "Competitions", " Climbing Walls"],
   },
   {
     title: "Affiliated Clubs",
-    image: "/images/affiliatedclubs.jpg",
+    image: card4,
     backList: ["Affiliated Clubs", "Club Registration"],
   },
   {
     title: "Tour Operators",
-    image: "/images/touroperators.jpg",
+    image: card5,
     backList: [
       "Registered Tour Operators",
       " Registration Procedure",
@@ -49,7 +57,7 @@ const quickLinks = [
   },
   {
     title: "Misc Links",
-    image: "/images/misclinks.jpg",
+    image: card6,
     backList: [
       " Discussion Forum",
       " Dormitories",
@@ -132,8 +140,8 @@ function QuickLinks() {
                   height: "100%",
                   borderRadius: 3,
                   boxShadow: 3,
-                  bgcolor: "black",
-                  color: "#fff",
+                  background: "linear-gradient(135deg, #ffffff, #8f8c8c)", // white to gray
+                  color: "#000", // optional: change text color for better contrast
                   backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
                   display: "flex",
@@ -151,9 +159,22 @@ function QuickLinks() {
                           primary={
                             <Typography
                               variant="body2"
-                              sx={{ fontSize: "14px", color: "#fff" }}
+                              sx={{
+                                fontSize: "14px",
+                                color: "#000",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 1,
+                                cursor: "pointer",
+                                "&:hover ": {
+                                  textDecoration: "underline",
+                                  textDecorationColor: "#256dead4",
+                                },
+                              }}
                             >
-                              <ArrowForwardIosIcon />
+                              <ArrowForwardIosIcon
+                                style={{ fontSize: "14px" }}
+                              />
                               {item}
                             </Typography>
                           }
