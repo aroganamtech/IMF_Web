@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
-import '../../styles/Home/Home.scss';
+import '../../styles/Home/CarouselSection.scss';
 
 function CarouselSection() {
   const [activeIndex, setActiveIndex] = useState(0);

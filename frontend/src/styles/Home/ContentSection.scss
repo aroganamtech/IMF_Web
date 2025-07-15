@@ -1,17 +1,11 @@
 $dark-gray: #4B5563;
 $medium-gray: #6B7280;
-$light-gray: #D1D5DB;
 $white: #FFFFFF;
-$shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 $transition: all 0.3s ease-in-out;
 $font-size: 1rem;
 $padding: 0.5rem 1rem;
 
 .content-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow-x: hidden;
-  box-sizing: border-box;
   padding: 2rem;
   text-align: center;
 

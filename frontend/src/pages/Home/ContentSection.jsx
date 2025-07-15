@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
-import '../../styles/Home/Home.scss';
+import '../../styles/Home/ContentSection.scss';
 
 function ContentSection() {
   const theme = useTheme();
