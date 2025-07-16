@@ -9,6 +9,8 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
+import { Link } from "react-router-dom";
+
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import card1 from "../../../../src/assets/images/frontCardimg1.png";
 import card2 from "../../../../src/assets/images/frontCardimg2.png";
@@ -19,50 +21,60 @@ import card4 from "../../../../src/assets/images/frontCardimg4.png";
 import card5 from "../../../../src/assets/images/frontCardimg5.png";
 import card6 from "../../../../src/assets/images/frontCardimg5.png";
 
-// Card data with back content as an array
 const quickLinks = [
   {
     title: "Expeditions",
     image: card1,
     backList: [
-      "Expedition Rules",
-      "Peak Details",
-      "Expedition Guide",
-      "Android App",
+      { label: "Expedition Rules", path: "/expetitionsrule" },
+      { label: "Peak Details", path: "" },
+      { label: "Expedition Guide", path: "" },
+      { label: "Android App", path: "" },
     ],
   },
   {
     title: "Membership",
     image: card2,
-    backList: ["List of Members", "Affiliate Members", "IMF Membership"],
+    backList: [
+      { label: "List of Members", path: "" },
+      { label: "Affiliate Members", path: "" },
+      { label: "IMF Membership", path: "" },
+    ],
   },
   {
     title: "Sport Climbing",
     image: card3,
-    backList: ["About Sport Climbing", "Competitions", " Climbing Walls"],
+    backList: [
+      { label: "About Sport Climbing", path: "" },
+      { label: "Competitions", path: "" },
+      { label: "Climbing Walls", path: "" },
+    ],
   },
   {
     title: "Affiliated Clubs",
     image: card4,
-    backList: ["Affiliated Clubs", "Club Registration"],
+    backList: [
+      { label: "Affiliated Clubs", path: "" },
+      { label: "Club Registration", path: "" },
+    ],
   },
   {
     title: "Tour Operators",
     image: card5,
     backList: [
-      "Registered Tour Operators",
-      " Registration Procedure",
-      "Safety Advisory",
+      { label: "Registered Tour Operators", path: "" },
+      { label: "Registration Procedure", path: "" },
+      { label: "Safety Advisory", path: "" },
     ],
   },
   {
     title: "Misc Links",
     image: card6,
     backList: [
-      " Discussion Forum",
-      " Dormitories",
-      " Grievance",
-      "Courses & Workshops",
+      { label: "Discussion Forum", path: "" },
+      { label: "Dormitories", path: "" },
+      { label: "Grievance", path: "" },
+      { label: "Courses & Workshops", path: "" },
     ],
   },
 ];
@@ -97,7 +109,6 @@ function QuickLinks() {
                 },
               }}
             >
-              {/* Front Side */}
               <Card
                 sx={{
                   position: "absolute",
@@ -132,7 +143,6 @@ function QuickLinks() {
                 </Box>
               </Card>
 
-              {/* Back Side */}
               <Card
                 sx={{
                   position: "absolute",
@@ -140,8 +150,8 @@ function QuickLinks() {
                   height: "100%",
                   borderRadius: 3,
                   boxShadow: 3,
-                  background: "linear-gradient(135deg, #ffffff, #8f8c8c)", // white to gray
-                  color: "#000", // optional: change text color for better contrast
+                  background: "linear-gradient(135deg, #ffffff, #8f8c8c)",
+                  color: "#000",
                   backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
                   display: "flex",
@@ -157,26 +167,34 @@ function QuickLinks() {
                       <ListItem key={idx} sx={{ py: 0 }}>
                         <ListItemText
                           primary={
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                fontSize: "14px",
-                                color: "#000",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 1,
-                                cursor: "pointer",
-                                "&:hover ": {
-                                  textDecoration: "underline",
-                                  textDecorationColor: "#256dead4",
-                                },
+                            <Link
+                              to={item.path}
+                              style={{
+                                textDecoration: "none",
+                                color: "inherit",
                               }}
                             >
-                              <ArrowForwardIosIcon
-                                style={{ fontSize: "14px" }}
-                              />
-                              {item}
-                            </Typography>
+                              <Typography
+                                variant="body2"
+                                sx={{
+                                  fontSize: "14px",
+                                  color: "#000",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: 1,
+                                  cursor: "pointer",
+                                  "&:hover ": {
+                                    textDecoration: "underline",
+                                    textDecorationColor: "#256dead4",
+                                  },
+                                }}
+                              >
+                                <ArrowForwardIosIcon
+                                  style={{ fontSize: "14px" }}
+                                />
+                                {item.label}
+                              </Typography>
+                            </Link>
                           }
                         />
                       </ListItem>
