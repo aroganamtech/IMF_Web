@@ -1,0 +1,46 @@
+/* Reset and base */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+}
+
+/* Header & Footer */
+.header, .footer {
+  background: #0d47a1;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Content */
+.main-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Typography Enhancements */
+h2 {
+  color: #0d47a1;
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1rem;
+  }
+}
