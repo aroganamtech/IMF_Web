@@ -1,3 +1,4 @@
+@use "sass:color";
 $dark-gray: #4B5563;
 $medium-gray: #6B7280;
 $white: #FFFFFF;
@@ -12,10 +13,19 @@ $primary-red: #e52727;
 }
 
 .about_climbing_heading {
-  text-align: center;
-  color: $dark-gray;
-  margin-bottom: 2rem;
-  font-weight: 700;
+   color: $dark-gray;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem !important;
+    text-align:center ;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.8rem;
+    }
 }
 
 .about_climbing_card_wrapper {
@@ -77,8 +87,18 @@ $primary-red: #e52727;
     color: $primary-red;
     margin-bottom: 0.5rem;
 
+    @media (max-width: 768px) {
+      margin-bottom: 0.2rem;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 0rem !important;
+    } 
+    
+
     .about_climbing_card_icon_svg {
       font-size: 3rem !important;
+     
     }
   }
 
@@ -86,6 +106,13 @@ $primary-red: #e52727;
     font-size: 1.3rem;
     font-weight: bold;
     color: $white;
+     @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.1rem;
+    }
   }
 
   .about_climbing_card_links {
@@ -100,6 +127,14 @@ $primary-red: #e52727;
     gap: 0.5rem;
     width:max-content;
     z-index: 1;
+
+    //  @media (max-width: 768px) {
+    //   top: 10rem;
+    // }
+
+    // @media (max-width: 480px) {
+    //   top: 5rem;
+    // }
 
     .about_climbing_card_link {
       color: $white;
@@ -118,12 +153,20 @@ $primary-red: #e52727;
   }
 
   &:hover {
+
     .about_climbing_card_header {
       transform: translateY(-70%);
       font-size: 20px;
     }
     .about_climbing_card_icon_svg {
       font-size: 2rem !important;
+      @media (max-width: 768px) {
+      font-size: 2rem !important;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem !important;
+    } 
     }
     .about_climbing_card_icon {
       margin-bottom: 5px;
@@ -140,4 +183,34 @@ $primary-red: #e52727;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 80%;
+}
+.about_climbing_buttons {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  .about_climbing_button {
+    background-color: $dark-gray;
+    color: $white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+  background-color: color.adjust($dark-gray, $lightness: -10%);    }
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+  }
 }

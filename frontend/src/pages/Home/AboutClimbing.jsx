@@ -51,12 +51,12 @@ function AboutClimbing() {
 
   return (
     <Box className="about_climbing_container">
-      <Typography variant="h4" className="about_climbing_heading">
+      <Typography variant="h3" className="about_climbing_heading">
         About Climbing in India
       </Typography>
       <Grid container spacing={4}>
         {/* LEFT COLUMN - Cards */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Box display="flex" flexWrap="wrap" gap={2}>
             {panels.map((panel, index) => {
               const isHovered = hovered === index;
@@ -117,18 +117,28 @@ function AboutClimbing() {
         </Grid>
 
         {/* RIGHT COLUMN - Map */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Box className="about_climbing_map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.3520833435146!2d76.93332480482869!3d11.012188410673566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8592085a15a9b%3A0x9548be99f316cd09!2sAgricultural%20Engineering%20College%20and%20Research%20Institute!5e0!3m2!1sen!2sin!4v1752587848874!5m2!1sen!2sin"
               width="100%"
-              height="400"
-              style={{ border: 0 }}
+              height="100%"
+              // position="relative"
+              style={{ border: 0, position: "relative" }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Climbing Map"
             ></iframe>
+          </Box>
+          <Box className="about_climbing_buttons">
+            {["Top Peaks", "Virgin Peaks", "Trekking Peaks", "Others"].map(
+              (label, index) => (
+                <button className="about_climbing_button" key={index}>
+                  {label}
+                </button>
+              )
+            )}
           </Box>
         </Grid>
       </Grid>
