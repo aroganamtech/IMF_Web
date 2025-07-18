@@ -1,200 +1,170 @@
 import React from 'react';
 import {
+  Box,
+  Typography,
+  useMediaQuery,
   ThemeProvider,
   createTheme,
   CssBaseline,
   Container,
-  Typography,
-  Card,
-  CardContent,
-  Box,
-  Grid,
-  Divider,
-  Button,
-  useMediaQuery,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import giripremiLogo from '../../../assets/images/giripremi Logo.png'; 
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
-    primary: {
-      main: '#1e3a8a', // Dark blue
-    },
-    secondary: {
-      main: '#0d47a1',
-    },
-    background: {
-      default: '#f3f8ff',
-      paper: '#ffffff',
-    },
-    text: {
-      primary: '#333',
-      secondary: '#666',
-    },
+    primary: { main: '#1e3a8a' },
+    background: { default: '#fff' },
   },
   typography: {
-    h4: { fontWeight: 700, fontSize: '2rem' },
-    subtitle1: { fontWeight: 600, fontSize: '1.2rem' },
-    body2: { fontSize: '0.9rem', color: '#444' },
+    fontFamily: 'Arial',
   },
 });
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  transition: 'transform 0.2s, box-shadow 0.2s',
-  '&:hover': {
-    transform: 'translateY(-5px)',
-    boxShadow: theme.shadows[6],
-  },
-  borderRadius: '12px',
-  backgroundColor: '#f9fbfd',
-}));
 
 const clubs = [
   {
     name: 'Giripremi',
-    location: 'Pune, Maharashtra',
-    description:
-      'Founded in 1992 as a mountaineering club to promote adventure sports. Organized expeditions to Mt. Everest, K2, and others. Offers training in mountaineering, rock climbing, and rescue.',
-    image: 'https://via.placeholder.com/100x100.png?text=Giripremi', // Corrected to unique placeholder
-    address: 'Flat No. 1, Aashirwad Road, Deccan 411004 Pune Maharashtra',
     email: 'giripremi@gmail.com',
-    phone: '9823096727',
-    website: '',
+    phone: '8390655772',
+    address: 'Flat no 1, Asmita Society Apte Road, Deccan 411004 Pune Maharashtra',
+    description: `Giripremi founded in 1982 with a motto Mountaineering for Joy is working in the field of Hardcore mountaineering with aim to promote this sports and provide platform to new generations...`,
+    image: giripremiLogo,
   },
   {
-    name: 'Founders',
-    location: 'Kolkata, West Bengal',
+    name: 'Kolkata Trekkers Youth',
+    email: 'kolkatatrekkersyouth@gmail.com',
+    phone: '7896541023',
+    address: 'Flat no 1, Asmita Society Apte Road, Deccan 411004 Pune Maharashtra',
     description:
-      'Founded by a group of adventure lovers from Kolkata. Works with West Bengal Youth Services & Mountaineering Association.',
-    image: 'https://via.placeholder.com/100x100.png?text=Founders',
-    address: '172 O.T. Road, P.O. Belurmath 700201 Kolkata West Bengal',
-    email: 'founders@gmail.com',
-    phone: '09512464',
-    website: '',
+      'Founded on 4th February, 1985 by a group of young and energetic adventure lovers of Kolkata...',
+    image: giripremiLogo,
   },
   {
-    name: 'STEPP',
-    location: 'Chennai, Tamil Nadu',
-    description:
-      'Society for Trekking & Environmental Preservation (STEPP) focuses on environment and nature preservation through trekking and camping.',
-    image: 'https://via.placeholder.com/100x100.png?text=STEPP',
-    address: 'Indian Mountaineering Foundation, Benito Juarez Road, New Delhi',
-    email: 'stepp@gmail.com',
-    phone: '09916441',
-    website: '',
+    name: 'Giripremi',
+    email: 'giripremi@gmail.com',
+    phone: '8390655772',
+    address: 'Flat no 1, Asmita Society Apte Road, Deccan 411004 Pune Maharashtra',
+    description: `Giripremi founded in 1982 with a motto Mountaineering for Joy is working in the field of Hardcore mountaineering with aim to promote this sports and provide platform to new generations...`,
+    image: giripremiLogo,
+  },
+  {
+    name: 'Giripremi',
+    email: 'giripremi@gmail.com',
+    phone: '8390655772',
+    address: 'Flat no 1, Asmita Society Apte Road, Deccan 411004 Pune Maharashtra',
+    description: `Giripremi founded in 1982 with a motto Mountaineering for Joy is working in the field of Hardcore mountaineering with aim to promote this sports and provide platform to new generations...`,
+    image: giripremiLogo,
   },
 ];
 
 const ClubCard = ({ club }) => (
-  <StyledCard sx={{ mb: 4, p: 2 }}>
-    <CardContent>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item xs={12} sm={10}>
-          <Typography variant="subtitle1" color="primary" gutterBottom>
-            {club.name}{' '}
-            <span style={{ color: '#777', fontWeight: 400 }}>
-              ({club.location})
-            </span>
+  <Box
+    sx={{
+      border: '1px solid #ccc',
+      borderRadius: 1,
+      mb: 4,
+    }}
+  >
+    {/* Header with Club Name & Email */}
+    <Box
+      sx={{
+        backgroundColor: '#cce5f6',
+        px: 2,
+        py: 1,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+        {club.name}
+      </Typography>
+      <Typography variant="body2">
+        <strong>E-Mail:</strong>{' '}
+        <a href={`mailto:${club.email}`}>{club.email}</a>
+      </Typography>
+    </Box>
+
+    {/* Description and Logo */}
+    <Box
+      sx={{
+        p: 2,
+        backgroundColor: '#fff',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 2,
+        justifyContent: 'space-between',
+      }}
+    >
+      <Box sx={{ flex: '1 1 70%' }}>
+        <Typography variant="body2" sx={{ whiteSpace: 'pre-line' }}>
+          {club.description}
+        </Typography>
+      </Box>
+
+      <Box sx={{ flex: '1 1 150px', textAlign: 'right' }}>
+        <Box
+          component="img"
+          src={club.image}
+          alt={`${club.name} logo`}
+          sx={{
+            width: 100,
+            height: 100,
+            objectFit: 'contain',
+          }}
+        />
+      </Box>
+    </Box>
+
+    {/* Address and Phone Section */}
+    {(club.address || club.phone) && (
+      <Box
+        sx={{
+          backgroundColor: '#F5F5F5',
+          px: 2,
+          py: 1,
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+        }}
+      >
+        {club.address && (
+          <Typography sx={{ fontWeight: 'bold' }}>{club.address}</Typography>
+        )}
+        {club.phone && (
+          <Typography>
+            <strong>Phone:</strong> {club.phone}
           </Typography>
-          <Typography variant="body2" paragraph>{club.description}</Typography>
-          <Typography variant="body2">Address: {club.address}</Typography>
-          <Typography variant="body2">
-            Email:{' '}
-            <a
-              href={`mailto:${club.email}`}
-              style={{ color: theme.palette.secondary.main }}
-            >
-              {club.email}
-            </a>
-          </Typography>
-          <Typography variant="body2">Phone: {club.phone}</Typography>
-          {club.website && (
-            <Typography variant="body2">
-              Website:{' '}
-              <a
-                href={club.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: theme.palette.secondary.main }}
-              >
-                {club.website}
-              </a>
-            </Typography>
-          )}
-        </Grid>
-        <Grid item xs={12} sm={2}>
-          <Box
-            component="img"
-            src={club.image}
-            alt={`${club.name} logo`}
-            sx={{
-              width: 100,
-              height: 100,
-              objectFit: 'contain',
-              borderRadius: 2,
-              border: '1px solid #ccc',
-              backgroundColor: '#fff',
-              display: 'block',
-              ml: 'auto', // Aligns image to the right
-            }}
-            onError={(e) => {
-              e.target.src = 'https://via.placeholder.com/100x100.png?text=Image+Not+Found';
-            }} // Fallback for failed images
-          />
-        </Grid>
-      </Grid>
-    </CardContent>
-  </StyledCard>
+        )}
+      </Box>
+    )}
+  </Box>
 );
 
-function AffiliatedClubs() {
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+function RegisteredClubsPage() {
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ minHeight: '100vh', backgroundColor: theme.palette.background.default, pt: 4 }}>
-        <Container maxWidth="lg">
-          <Box
-            sx={{
-              position: 'sticky',
-              top: 0,
-              zIndex: 1000,
-              bgcolor: 'white',
-              py: 2,
-              mb: 4,
-              boxShadow: 1,
-            }}
-          >
-            <Typography
-              variant="h4"
-              align="center"
-              color="primary"
-              sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}
-            >
-              Registered Clubs
-            </Typography>
-          </Box>
+      <Container maxWidth="md" sx={{ mt: 4 }}>
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          sx={{ fontWeight: 'bold', color: 'orange' }}
+        >
+          REGISTERED CLUBS
+        </Typography>
 
-          <Grid container spacing={isSmallScreen ? 2 : 4}>
-            {clubs.map((club, index) => (
-              <Grid item xs={12} key={index}>
-                <ClubCard club={club} />
-              </Grid>
-            ))}
-          </Grid>
-
-          <Divider sx={{ my: 6 }} />
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
-            <Button variant="contained" color="primary" href="#top">
-              Back to Top
-            </Button>
-          </Box>
-        </Container>
-      </Box>
+        {clubs.map((club, idx) => (
+          <ClubCard club={club} key={idx} />
+        ))}
+      </Container>
     </ThemeProvider>
   );
 }
 
-export default AffiliatedClubs;
+export default RegisteredClubsPage;
