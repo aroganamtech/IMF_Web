@@ -9,6 +9,7 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import card1 from "../../../../src/assets/images/frontCardimg1.png";
 import card2 from "../../../../src/assets/images/frontCardimg2.png";
@@ -25,49 +26,61 @@ const quickLinks = [
     title: "Expeditions",
     image: card1,
     backList: [
-      "Expedition Rules",
-      "Peak Details",
-      "Expedition Guide",
-      "Android App",
+      { label: "Expedition Rules", link: "/expedition-rules" },
+      { label: "Peak Details", link: "/peak-details" },
+      { label: "Expedition Guide", link: "/expedition-guide" },
+      { label: "Android App", link: "/android-app" },
     ],
   },
   {
     title: "Membership",
     image: card2,
-    backList: ["List of Members", "Affiliate Members", "IMF Membership"],
+    backList: [
+      { label: "List of Members", link: "/members/list" },
+      { label: "Affiliate Members", link: "/members/affiliates" },
+      { label: "IMF Membership", link: "/membership" },
+    ],
   },
   {
     title: "Sport Climbing",
     image: card3,
-    backList: ["About Sport Climbing", "Competitions", " Climbing Walls"],
+    backList: [
+      { label: "About Sport Climbing", link: "/sportclimbing" },
+      { label: "Competitions", link: "/competitions" },
+      { label: "Climbing Walls", link: "/climbingwalls" },
+    ],
   },
   {
     title: "Affiliated Clubs",
     image: card4,
-    backList: ["Affiliated Clubs", "Club Registration"],
+    backList: [
+      { label: "Affiliated Clubs", link: "/affiliatedclubs" },
+      { label: "Club Registration", link: "/clubregistration" },
+    ],
   },
   {
     title: "Tour Operators",
     image: card5,
     backList: [
-      "Registered Tour Operators",
-      " Registration Procedure",
-      "Safety Advisory",
+      { label: "Registered Tour Operators", link: "/tour-operators" },
+      { label: "Registration Procedure", link: "/registration-procedure" },
+      { label: "Safety Advisory", link: "/safety-advisory" },
     ],
   },
   {
     title: "Misc Links",
     image: card6,
     backList: [
-      " Discussion Forum",
-      " Dormitories",
-      " Grievance",
-      "Courses & Workshops",
+      { label: "Discussion Forum", link: "/forum" },
+      { label: "Dormitories", link: "/dormitories" },
+      { label: "Grievance", link: "/grievance" },
+      { label: "Courses & Workshops", link: "/courses" },
     ],
   },
 ];
 
 function QuickLinks() {
+  const navigate = useNavigate();
   return (
     <Box sx={{ p: 4, backgroundColor: "#d3d3d3", textAlign: "center" }}>
       <Typography variant="h4" fontWeight="bold" mb={4}>
@@ -154,7 +167,11 @@ function QuickLinks() {
                 {link.backList.length > 0 ? (
                   <List dense>
                     {link.backList.map((item, idx) => (
-                      <ListItem key={idx} sx={{ py: 0 }}>
+                      <ListItem
+                        key={idx}
+                        sx={{ py: 0, cursor: "pointer" }}
+                        onClick={() => item.link && navigate(item.link)}
+                      >
                         <ListItemText
                           primary={
                             <Typography
@@ -165,17 +182,16 @@ function QuickLinks() {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: 1,
-                                cursor: "pointer",
-                                "&:hover ": {
+                                "&:hover": {
                                   textDecoration: "underline",
-                                  textDecorationColor: "#256dead4",
+                                  textDecorationColor: "black",
                                 },
                               }}
                             >
                               <ArrowForwardIosIcon
                                 style={{ fontSize: "14px" }}
                               />
-                              {item}
+                              {item.label}
                             </Typography>
                           }
                         />
